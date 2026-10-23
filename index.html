@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Sweety Kumari - UI/UX designer and web developer from Patna, Bihar.">
+<title>Sweety Kumari</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a designer from Bihar — clean modern UI work, framed by Madhubani-style line borders between chapters */
+:root{
+  --paper:#FBFAF8; --card:#FFFFFF; --ink:#18181C; --muted:#62606A; --line:#E6E2DC;
+  --red:#C2391F; --red-soft:#FBE9E4; --gold:#EFAE1E; --gold-soft:#FFF3D6; --leaf:#2E7A58;
+  --display:"Syne",ui-sans-serif,system-ui,sans-serif;
+  --body:"Figtree",ui-sans-serif,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#141317; --card:#1C1B20; --ink:#F1EFEC; --muted:#A9A5AE; --line:#2F2D34;
+  --red:#F06A4D; --red-soft:#33201C; --gold:#F5BE45; --gold-soft:#2E2715; --leaf:#5CC294; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#141317; --card:#1C1B20; --ink:#F1EFEC; --muted:#A9A5AE; --line:#2F2D34;
+  --red:#F06A4D; --red-soft:#33201C; --gold:#F5BE45; --gold-soft:#2E2715; --leaf:#5CC294; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.in{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:6px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.muted{color:var(--muted)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .in{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:12px}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700}
+.mark i{width:34px;height:34px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font:800 13px var(--display);font-style:normal}
+.nav nav{display:flex;gap:2px;flex-wrap:wrap;justify-content:flex-end}
+.nav nav a{text-decoration:none;font-size:14px;font-weight:500;padding:7px 11px;border-radius:999px}
+.nav nav a:hover{background:var(--red-soft);color:var(--red)}
+@media (max-width:640px){.nav nav a.opt{display:none}}
+
+/* madhubani border */
+.mb{display:block;width:100%;height:26px;color:var(--red)}
+
+/* hero */
+.hero .in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:center;padding-block:64px 48px}
+.hello{font-size:clamp(40px,5.6vw,70px);font-weight:800;line-height:.98}
+.hello span{color:var(--red)}
+.hello .u{background:linear-gradient(transparent 68%,var(--gold) 68%,var(--gold) 92%,transparent 92%);color:inherit}
+.intro{font-size:clamp(18px,2vw,21px);margin-top:22px;max-width:34ch}
+.sub{margin-top:14px;max-width:52ch;color:var(--muted)}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{font:600 15px var(--body);padding:12px 20px;border-radius:999px;text-decoration:none;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);display:inline-flex;align-items:center;gap:8px}
+.btn.alt{background:transparent;color:var(--ink)}
+.btn:hover{transform:translateY(-1px)}
+.avail{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;margin-bottom:22px;padding:6px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+.avail i{width:8px;height:8px;border-radius:50%;background:var(--leaf);box-shadow:0 0 0 4px color-mix(in srgb,var(--leaf) 22%,transparent)}
+
+.stage{position:relative;padding:20px 10px 40px}
+.sel{position:relative;transform:rotate(-2deg)}
+.sel::after{content:"";position:absolute;inset:-8px;border:1.5px solid var(--red);pointer-events:none}
+.hd{position:absolute;width:9px;height:9px;background:var(--card);border:1.5px solid var(--red);z-index:2}
+.hd.a{top:-12px;left:-12px}.hd.b{top:-12px;right:-12px}.hd.c{bottom:-12px;left:-12px}.hd.d{bottom:-12px;right:-12px}
+.size{position:absolute;bottom:-34px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font:500 11px var(--mono);padding:3px 8px;border-radius:4px;white-space:nowrap}
+.tagnote{position:absolute;top:-6px;right:0;background:var(--gold);color:#2A1E00;font:600 13px var(--body);padding:10px 14px;transform:rotate(4deg);box-shadow:0 10px 20px -12px rgba(0,0,0,.4);z-index:3}
+.cursor{position:absolute;left:18%;bottom:8px;z-index:3;display:flex;align-items:flex-start;gap:2px}
+.cursor span{background:var(--leaf);color:#fff;font:600 11px var(--body);padding:3px 8px;border-radius:0 8px 8px 8px;margin-top:14px}
+
+/* generic dashboard mock (used in hero + gallery) */
+.dash{display:grid;grid-template-columns:52px 1fr;background:#FFFFFF;border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(20,20,30,.45);border:1px solid #E7E5EE;font-family:var(--body);color:#1C1C24;aspect-ratio:16/11;max-width:100%}
+.dash.dk{background:#15161C;border-color:#2A2B33;color:#EDEDF2}
+.side{background:#F4F2F8;padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:12px}
+.dash.dk .side{background:#1D1E26}
+.side i{width:22px;height:22px;border-radius:6px;background:#DCD8E6;display:block}
+.side i.on{background:#C2391F}
+.dash.dk .side i{background:#32333D}.dash.dk .side i.on{background:#F06A4D}
+.main{padding:14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.mh{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:13px}
+.mh small{font-weight:500;font-size:10px;opacity:.55}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kpi{border-radius:7px;padding:8px;background:#F7F6FA;font-size:9px;line-height:1.25}
+.dash.dk .kpi{background:#1F2029}
+.kpi b{display:block;font-size:15px;font-family:var(--display);margin-top:2px}
+.kpi em{font-style:normal;color:#2E7A58;font-weight:600}
+.dash.dk .kpi em{color:#5CC294}
+.chartbox{flex:1;border-radius:7px;background:#F7F6FA;padding:8px;display:flex;align-items:flex-end;gap:5px;min-height:60px}
+.dash.dk .chartbox{background:#1F2029}
+.chartbox i{flex:1;border-radius:3px 3px 0 0;background:#E9C9C0;display:block}
+.chartbox i.hi{background:#C2391F}
+.dash.dk .chartbox i{background:#4A2E29}.dash.dk .chartbox i.hi{background:#F06A4D}
+
+/* stats strip */
+.stats{border-block:1px solid var(--line);background:var(--card)}
+.stats .in{display:grid;grid-template-columns:repeat(4,1fr);padding-block:22px}
+.stat{padding:4px 20px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat b{display:block;font:800 clamp(28px,4vw,40px)/1 var(--display);font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;color:var(--muted)}
+@media (max-width:700px){.stats .in{grid-template-columns:repeat(2,1fr);row-gap:18px}.stat:nth-child(3){border-left:0;padding-left:0}}
+
+/* sections */
+section.s{padding-block:88px 24px}
+.shead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:end;margin-bottom:40px}
+.shead h2{font-size:clamp(34px,5vw,56px);font-weight:800;line-height:1;margin-top:10px}
+.shead p{color:var(--muted);max-width:46ch;justify-self:end}
+@media (max-width:760px){.shead{grid-template-columns:minmax(0,1fr)}.shead p{justify-self:start}}
+
+/* what I do */
+.do{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.doc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.doc .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center}
+.doc:nth-child(1) .ic{background:var(--red-soft);color:var(--red)}
+.doc:nth-child(2) .ic{background:var(--gold-soft);color:var(--gold)}
+.doc:nth-child(3) .ic{background:color-mix(in srgb,var(--leaf) 15%,transparent);color:var(--leaf)}
+.doc h3{font-size:22px;font-weight:700}
+.doc p{color:var(--muted)}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
+.tools span{font:500 12px var(--mono);padding:4px 9px;border-radius:6px;background:var(--paper);border:1px solid var(--line)}
+@media (max-width:860px){.do{grid-template-columns:minmax(0,1fr)}}
+
+/* case studies */
+.case{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:44px;align-items:center;padding-block:36px;border-top:1px solid var(--line)}
+.case:first-of-type{border-top:0}
+.case.flip .visual{order:2}
+.visual{border-radius:22px;padding:28px;min-height:340px;display:flex;align-items:center;justify-content:center}
+.v-red{background:var(--red-soft)}.v-gold{background:var(--gold-soft)}.v-leaf{background:color-mix(in srgb,var(--leaf) 13%,var(--paper))}
+.case .num{font:500 13px var(--mono);color:var(--muted)}
+.case h3{font-size:clamp(26px,3.4vw,36px);font-weight:800;line-height:1.05;margin:8px 0 6px}
+.case .kind{font-weight:600;color:var(--red)}
+.case dl{margin:20px 0 0;display:grid;gap:14px}
+.case dt{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.case dd{margin:3px 0 0;max-width:56ch}
+.result{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.result div{border-radius:12px;padding:10px 14px;background:var(--card);border:1px solid var(--line)}
+.result b{display:block;font:800 22px var(--display)}
+.result span{font-size:12px;color:var(--muted)}
+@media (max-width:860px){.case{grid-template-columns:minmax(0,1fr);gap:24px}.case.flip .visual{order:0}.visual{min-height:0;padding:18px}}
+
+/* browser mock */
+.browser{width:100%;max-width:520px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,20,10,.45);border:1px solid #EADFD8;color:#22160F;font-family:var(--body)}
+.bbar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#F5EFEA;border-bottom:1px solid #EADFD8}
+.bbar i{width:9px;height:9px;border-radius:50%;background:#E2D3C8;display:block}
+.bbar span{margin-left:10px;flex:1;background:#fff;border-radius:6px;font:400 10px var(--mono);color:#8B7A6E;padding:3px 8px}
+.sg-nav{display:flex;justify-content:space-between;align-items:center;padding:10px 16px}
+.sg-nav b{font:800 15px var(--display);color:#9E2B14}
+.sg-nav span{display:flex;gap:12px;font-size:11px;color:#6B5A4F}
+.sg-nav em{font-style:normal;background:#9E2B14;color:#fff;padding:3px 9px;border-radius:20px;font-size:10px}
+.sg-hero{margin:0 12px;border-radius:10px;padding:18px 16px;background:linear-gradient(120deg,#3B1A0E,#7A2A12);color:#FFEBD9}
+.sg-hero strong{display:block;font:800 19px/1.1 var(--display)}
+.sg-hero small{font-size:10.5px;opacity:.8}
+.sg-tabs{display:flex;gap:6px;padding:12px 16px 6px;flex-wrap:wrap}
+.sg-tabs span{font-size:10.5px;padding:3px 10px;border-radius:20px;border:1px solid #E5D6CC;color:#6B5A4F}
+.sg-tabs span.on{background:#EFAE1E;border-color:#EFAE1E;color:#2A1E00;font-weight:600}
+.sg-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:6px 16px 12px}
+.sg-item{display:flex;gap:8px;align-items:center;border:1px solid #F0E5DD;border-radius:8px;padding:7px}
+.sg-item .dish{width:34px;height:34px;border-radius:8px;flex:none}
+.sg-item div{flex:1;min-width:0;font-size:11px;line-height:1.25}
+.sg-item b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sg-item small{color:#8B7A6E}
+.sg-item button{font:700 10px var(--body);border:0;background:#9E2B14;color:#fff;border-radius:5px;padding:3px 7px}
+.sg-cart{display:flex;justify-content:space-between;align-items:center;margin:0 12px 12px;padding:9px 14px;border-radius:9px;background:#22160F;color:#fff;font-size:11.5px}
+.sg-cart b{color:#EFAE1E}
+
+/* km chart */
+.kmwrap{width:100%;max-width:480px;background:var(--card);border-radius:14px;border:1px solid var(--line);padding:16px;box-shadow:0 30px 60px -34px rgba(10,40,25,.45)}
+.kmwrap .t{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-weight:700;font-size:14px}
+.kmwrap .t span{font:400 11px var(--mono);color:var(--muted)}
+.kmc{position:relative;aspect-ratio:4/3;margin-top:8px}
+.kmc canvas{position:absolute;inset:0 0 22px 22px;width:calc(100% - 22px);height:calc(100% - 22px)}
+.kmc .ax{position:absolute;font:400 10px var(--mono);color:var(--muted)}
+.kmc .ax.x{bottom:0;left:24px}
+.kmc .ax.y{left:0;top:40%;writing-mode:vertical-rl;transform:rotate(180deg)}
+.leg{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--muted)}
+.leg span{display:flex;align-items:center;gap:6px}
+.leg i{width:10px;height:10px;border-radius:50%;display:block}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.tile{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.tile .pic{aspect-ratio:4/3;padding:12px;display:flex}
+.tile .cap{padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px;border-top:1px solid var(--line)}
+.tile .cap b{font-weight:600;font-size:14.5px}
+.tile .cap span{font:400 11px var(--mono);color:var(--muted);white-space:nowrap}
+.tile.more{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;border-style:dashed;background:transparent;min-height:180px;text-align:center;padding:16px}
+.tile.more b{font:800 34px var(--display);color:var(--red)}
+@media (max-width:960px){.gal{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:460px){.gal{grid-template-columns:minmax(0,1fr)}}
+.ui{flex:1;border-radius:8px;overflow:hidden;font-family:var(--body);font-size:8.5px;line-height:1.25;display:flex;flex-direction:column;gap:6px;padding:9px;min-width:0}
+.ui b{font-weight:700}
+/* HR */
+.u-hr{background:#F3F6FB;color:#1D2433}
+.u-hr .row{display:flex;align-items:center;gap:6px;background:#fff;border-radius:5px;padding:5px 6px}
+.u-hr .row i{width:14px;height:14px;border-radius:50%;flex:none}
+.u-hr .row span{flex:1}
+.u-hr .row em{font-style:normal;font-size:7.5px;padding:1px 5px;border-radius:8px;background:#DDF3E8;color:#1E7A50}
+.u-hr .row em.l{background:#FFF1D6;color:#9A6200}
+/* E-learning */
+.u-el{background:#FFF8EE;color:#2B2116}
+.u-el .cards{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex:1}
+.u-el .c{background:#fff;border-radius:6px;padding:5px;display:flex;flex-direction:column;gap:3px}
+.u-el .c i{height:22px;border-radius:4px;display:block}
+.u-el .bar{height:3px;background:#F0E4D2;border-radius:2px;overflow:hidden}
+.u-el .bar s{display:block;height:100%;background:#E08A1E}
+/* gaming */
+.u-gm{background:radial-gradient(circle at 70% 20%,#3D1F6E,#0D0B18 70%);color:#F1ECFF;justify-content:flex-end}
+.u-gm strong{font:800 15px/1 var(--display);letter-spacing:.02em}
+.u-gm .g{display:flex;gap:5px}
+.u-gm .g span{padding:3px 7px;border-radius:4px;background:#F2C14E;color:#1A1300;font-weight:700}
+.u-gm .g span.o{background:transparent;border:1px solid #6C5A99;color:#D8CCFF}
+/* dating */
+.u-dt{background:#FFE9EF;color:#3A0F1E;flex-direction:row;align-items:center;gap:10px}
+.u-dt .txt{flex:1;display:flex;flex-direction:column;gap:5px}
+.u-dt strong{font:800 13px/1.05 var(--display)}
+.u-dt .pill{align-self:flex-start;background:#E0335F;color:#fff;border-radius:10px;padding:3px 8px;font-weight:700}
+.u-dt .phone{width:56px;height:100%;max-height:96px;border-radius:10px;background:#fff;border:2px solid #3A0F1E;display:flex;flex-direction:column;padding:4px;gap:3px;flex:none}
+.u-dt .phone i{flex:1;border-radius:6px;background:linear-gradient(160deg,#F7A8BC,#E0335F);display:block}
+.u-dt .phone span{display:flex;justify-content:space-around;font-size:9px}
+/* coaching */
+.u-co{background:#EAF4EF;color:#10291E}
+.u-co strong{font:800 13px/1.1 var(--display);max-width:16ch}
+.u-co .pill{align-self:flex-start;background:#10291E;color:#fff;border-radius:4px;padding:3px 8px;font-weight:700}
+.u-co .feat{display:flex;gap:5px;margin-top:auto}
+.u-co .feat span{flex:1;background:#fff;border-radius:5px;padding:4px;text-align:center}
+.mini .dash{aspect-ratio:auto;flex:1;grid-template-columns:26px 1fr;border-radius:8px;box-shadow:none}
+.mini .side{gap:6px;padding:7px 0}.mini .side i{width:12px;height:12px;border-radius:3px}
+.mini .main{padding:7px;gap:5px}.mini .mh{font-size:9px}.mini .kpi{padding:4px;font-size:7px}.mini .kpi b{font-size:10px}.mini .chartbox{min-height:20px;padding:5px;gap:3px}
+
+/* skills */
+.skillgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
+.sk{border-top:3px solid var(--ink);padding-top:14px}
+.sk h3{font:700 17px var(--body);letter-spacing:0;margin-bottom:12px}
+.sk ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
+.sk li{font-size:14px;padding:5px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+
+/* journey */
+.jgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:40px;align-items:start}
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl li{position:relative;padding:0 0 26px 34px}
+.tl li::before{content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--gold)}
+.tl li.edu::before{border-color:var(--red);background:var(--red)}
+.tl .when{font:500 12px var(--mono);color:var(--muted)}
+.tl h3{font:700 18px/1.3 var(--body);letter-spacing:0;margin:2px 0}
+.tl .by{color:var(--muted);font-size:14.5px}
+.pill2{display:inline-block;margin-top:6px;font:600 12px var(--body);padding:3px 10px;border-radius:999px;background:var(--gold-soft);color:var(--ink)}
+.pill2.r{background:var(--red-soft);color:var(--red)}
+.edcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;position:sticky;top:90px}
+.edcard h3{font-size:22px;font-weight:800}
+.cg{display:flex;align-items:baseline;gap:10px;margin-top:16px}
+.cg b{font:800 64px/1 var(--display);color:var(--red)}
+.chart{margin-top:18px}
+.chart svg{width:100%;height:auto;display:block}
+.chart text{font:400 10px var(--mono);fill:var(--muted)}
+.chart text.v{fill:var(--ink);font-weight:500}
+.cw{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.cw span{font-size:12.5px;padding:3px 9px;border-radius:6px;background:var(--paper);border:1px solid var(--line)}
+.school{display:grid;gap:8px;margin-top:16px;font-size:14.5px}
+.school div{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:8px}
+@media (max-width:860px){.jgrid{grid-template-columns:minmax(0,1fr)}.edcard{position:static}}
+
+/* contact */
+.contact{margin-top:96px;background:var(--gold);color:#241900}
+.contact .in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center;padding-block:64px}
+.contact h2{font-size:clamp(36px,6vw,68px);font-weight:800;line-height:.98}
+.contact p{margin-top:16px;max-width:42ch;font-size:17px}
+.crow{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#FFF9EC;border-radius:14px;padding:14px 16px;margin-bottom:10px;color:#241900}
+.crow small{display:block;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.6}
+.crow b{font-size:16.5px;overflow-wrap:anywhere;user-select:all}
+.copy{font:600 13px var(--body);border:0;background:#241900;color:#FFF9EC;padding:8px 14px;border-radius:999px;cursor:pointer;flex:none}
+.contact .mb{color:#241900}
+footer .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:22px;font-size:13px;color:var(--muted)}
+@media (max-width:860px){.hero .in,.contact .in{grid-template-columns:minmax(0,1fr)}.stage{padding:28px 18px 50px}}
+
+@media (prefers-reduced-motion:no-preference){
+  .sel{animation:float 6s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-6px)}}
+  .btn{transition:transform .15s}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="mbp" width="28" height="26" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="2" x2="28" y2="2" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="0" y1="5" x2="28" y2="5" stroke="currentColor" stroke-width=".8"/>
+      <line x1="0" y1="21" x2="28" y2="21" stroke="currentColor" stroke-width=".8"/>
+      <line x1="0" y1="24" x2="28" y2="24" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M0 19 L7 7 L14 19 L21 7 L28 19" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="7" cy="15" r="1.6" fill="currentColor"/>
+      <circle cx="21" cy="10.5" r="1.6" fill="currentColor"/>
+      <path d="M10 18 L11.5 15 M17 18 L15.5 15" stroke="currentColor" stroke-width=".7"/>
+    </pattern>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="in">
+    <a class="mark" href="#top"><i>SK</i>Sweety Kumari</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a><a class="opt" href="#designs">Designs</a><a class="opt" href="#skills">Skills</a><a href="#journey">Journey</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="in">
+      <div>
+        <div class="avail"><i></i>Open to entry-level roles &amp; internships</div>
+        <h1 class="hello">Hi, I'm Sweety.<br>I design <span>&amp;</span> build <span class="u">for the web.</span></h1>
+        <p class="intro">UI/UX designer and web developer from Patna, Bihar.</p>
+        <p class="sub">I've just completed my B.Tech in Computer Science at NSIT Bihta (final results awaited). I start in Figma with wireframes and prototypes, then turn the design into a working website with HTML, CSS, JavaScript, Node.js and MySQL. Lately I've also been learning data analysis and machine learning in Python.</p>
+        <div class="ctas">
+          <a class="btn" href="#work">View my work →</a>
+          <a class="btn alt" href="#contact">Contact me</a>
+        </div>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="tagnote">Designed in Figma ✎</div>
+        <div class="sel">
+          <i class="hd a"></i><i class="hd b"></i><i class="hd c"></i><i class="hd d"></i>
+          <div class="dash">
+            <div class="side"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+            <div class="main">
+              <div class="mh">Sales overview <small>This month</small></div>
+              <div class="kpis">
+                <div class="kpi">Revenue<b>₹4.8L</b><em>▲ 12%</em></div>
+                <div class="kpi">Orders<b>1,284</b><em>▲ 8%</em></div>
+                <div class="kpi">Customers<b>932</b><em>▲ 5%</em></div>
+              </div>
+              <div class="chartbox"><i style="height:35%"></i><i style="height:55%"></i><i style="height:45%"></i><i style="height:70%"></i><i style="height:60%"></i><i class="hi" style="height:92%"></i><i style="height:66%"></i><i style="height:50%"></i></div>
+            </div>
+          </div>
+          <span class="size">Analytics Dashboard · 1440 × 990</span>
+        </div>
+        <div class="cursor"><svg width="18" height="20" viewBox="0 0 18 20"><path d="M1 1 L16 9 L9 11 L6 18 Z" fill="var(--leaf)" stroke="#fff" stroke-width="1.5"/></svg><span>Sweety</span></div>
+      </div>
+    </div>
+    <svg class="mb" preserveAspectRatio="none"><rect width="100%" height="26" fill="url(#mbp)"/></svg>
+  </section>
+
+  <div class="stats">
+    <div class="in">
+      <div class="stat"><b>11</b><span>web &amp; dashboard designs in Figma</span></div>
+      <div class="stat"><b>3</b><span>projects: design, full-stack, data</span></div>
+      <div class="stat"><b>7</b><span>certificates, incl. NPTEL &amp; IIT Kanpur</span></div>
+      <div class="stat"><b>7.1</b><span>B.Tech CGPA (up to Sem VI)</span></div>
+    </div>
+  </div>
+
+  <section class="s">
+    <div class="in">
+      <div class="shead">
+        <div><div class="eyebrow">What I do</div><h2>Design. Build. Analyse.</h2></div>
+        <p>Three kinds of work, and I enjoy moving between them on the same project.</p>
+      </div>
+      <div class="do">
+        <div class="doc">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></div>
+          <h3>UI/UX Design</h3>
+          <p>Wireframes, prototypes and finished screens for websites and dashboards, laid out for both desktop and mobile.</p>
+          <div class="tools"><span>Figma</span><span>Auto-layout</span><span>Prototyping</span><span>HCI</span></div>
+        </div>
+        <div class="doc">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <h3>Web Development</h3>
+          <p>Responsive front-ends, plus REST APIs and databases behind them.</p>
+          <div class="tools"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Node.js</span><span>Express</span><span>PHP</span><span>MySQL</span></div>
+        </div>
+        <div class="doc">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+          <h3>Data &amp; ML</h3>
+          <p>Cleaning data, finding patterns and building simple models that explain customer behaviour.</p>
+          <div class="tools"><span>Python</span><span>Pandas</span><span>NumPy</span><span>Scikit-learn</span><span>Seaborn</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="work">
+    <div class="in">
+      <div class="shead">
+        <div><div class="eyebrow">Selected work</div><h2>Projects</h2></div>
+        <p>What each project was for, what I did, and how it turned out.</p>
+      </div>
+
+      <article class="case">
+        <div class="visual v-red" aria-hidden="true">
+          <div class="browser">
+            <div class="bbar"><i></i><i></i><i></i><span>spicegarden.in/menu</span></div>
+            <div class="sg-nav"><b>Spice Garden</b><span><span>Menu</span><span>About</span><span>Contact</span><em>Reserve</em></span></div>
+            <div class="sg-hero"><strong>Fresh Indian flavours,<br>served hot.</strong><small>Book a table or order from the menu</small></div>
+            <div class="sg-tabs"><span class="on">Starters</span><span>Main Course</span><span>Breads</span><span>Desserts</span></div>
+            <div class="sg-items">
+              <div class="sg-item"><span class="dish" style="background:radial-gradient(circle at 35% 35%,#F6C26B,#C2591F)"></span><div><b>Paneer Tikka</b><small>₹240</small></div><button tabindex="-1">Add</button></div>
+              <div class="sg-item"><span class="dish" style="background:radial-gradient(circle at 35% 35%,#9BD08A,#3E7A2E)"></span><div><b>Hara Bhara Kebab</b><small>₹200</small></div><button tabindex="-1">Add</button></div>
+              <div class="sg-item"><span class="dish" style="background:radial-gradient(circle at 35% 35%,#F59A6B,#A8321A)"></span><div><b>Chicken 65</b><small>₹260</small></div><button tabindex="-1">Add</button></div>
+              <div class="sg-item"><span class="dish" style="background:radial-gradient(circle at 35% 35%,#F7DE9A,#C9902A)"></span><div><b>Veg Spring Roll</b><small>₹180</small></div><button tabindex="-1">Add</button></div>
+            </div>
+            <div class="sg-cart"><span>🛒 3 items in cart</span><b>Total ₹680</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="num">Project 01 · Jan 2026 · NIIT</div>
+          <h3>Spice Garden</h3>
+          <div class="kind">Full-stack restaurant website</div>
+          <dl>
+            <div><dt>The goal</dt><dd>A restaurant site where people can browse the menu, order and book a table on any screen size.</dd></div>
+            <div><dt>What I built</dt><dd>A category-wise menu filter, add-to-cart with a live running total, and a reservation form with validation. Behind it, a REST API in Node.js and Express.js handles reservations, orders and contact messages, stored in a MySQL schema I designed.</dd></div>
+            <div><dt>Stack</dt><dd>HTML5 · CSS3 · JavaScript · Node.js · Express.js · MySQL</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="case flip">
+        <div class="visual v-leaf" aria-hidden="true">
+          <div class="kmwrap">
+            <div class="t">Customer segments <span>K-Means, k = 3</span></div>
+            <div class="kmc"><canvas id="km"></canvas><span class="ax y">Total spend →</span><span class="ax x">Purchase frequency →</span></div>
+            <div class="leg"><span><i style="background:var(--leaf)"></i>Segment A</span><span><i style="background:var(--gold)"></i>Segment B</span><span><i style="background:var(--red)"></i>Segment C</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="num">Project 02 · Mar 2026</div>
+          <h3>Amazon Customer Purchase Behaviour</h3>
+          <div class="kind">Data analysis &amp; machine learning</div>
+          <dl>
+            <div><dt>The question</dt><dd>Which groups of customers exist, how much is each customer worth over time, and who is likely to stop buying?</dd></div>
+            <div><dt>What I did</dt><dd>Cleaned 2,000 customer records (missing values, outliers) and explored trends with Matplotlib and Seaborn. Then I segmented customers with K-Means, predicted Customer Lifetime Value with Linear Regression, and built a Logistic Regression churn model.</dd></div>
+          </dl>
+          <div class="result">
+            <div><b>2,000</b><span>records cleaned</span></div>
+            <div><b>0.58</b><span>silhouette score</span></div>
+            <div><b>0.72</b><span>R² for CLV</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="visual v-gold" aria-hidden="true">
+          <div style="width:100%;max-width:520px">
+            <div class="dash dk">
+              <div class="side"><i></i><i class="on"></i><i></i><i></i></div>
+              <div class="main">
+                <div class="mh">Sales overview <small>Dark variant</small></div>
+                <div class="kpis">
+                  <div class="kpi">Revenue<b>₹4.8L</b><em>▲ 12%</em></div>
+                  <div class="kpi">Orders<b>1,284</b><em>▲ 8%</em></div>
+                  <div class="kpi">Customers<b>932</b><em>▲ 5%</em></div>
+                </div>
+                <div class="chartbox"><i style="height:35%"></i><i style="height:55%"></i><i style="height:45%"></i><i style="height:70%"></i><i style="height:60%"></i><i class="hi" style="height:92%"></i><i style="height:66%"></i><i style="height:50%"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="num">Project 03 · Jan 2026 · NIIT</div>
+          <h3>UI/UX Design Portfolio</h3>
+          <div class="kind">11 web &amp; dashboard designs in Figma</div>
+          <dl>
+            <div><dt>The brief</dt><dd>Design websites and dashboards for very different industries, each with its own look.</dd></div>
+            <div><dt>What I did</dt><dd>Designed 11 projects: analytics, HR, e-learning, gaming, a dating app landing page and a coaching site, several in both light and dark versions. I built reusable components with auto-layout, chose colours and typography to fit each industry, and laid out every screen for desktop and mobile.</dd></div>
+          </dl>
+          <div class="result">
+            <div><b>11</b><span>designs</span></div>
+            <div><b>2</b><span>themes: light &amp; dark</span></div>
+            <div><b>2</b><span>layouts: desktop &amp; mobile</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="s" id="designs">
+    <div class="in">
+      <div class="shead">
+        <div><div class="eyebrow">From the Figma file</div><h2>Design gallery</h2></div>
+        <p>A look at the different industries in my UI/UX work. Each one has its own colours and type.</p>
+      </div>
+      <div class="gal">
+        <div class="tile"><div class="pic mini" aria-hidden="true"><div class="dash"><div class="side"><i class="on"></i><i></i><i></i></div><div class="main"><div class="mh">Analytics</div><div class="kpis"><div class="kpi">Users<b>8.2k</b></div><div class="kpi">Visits<b>21k</b></div><div class="kpi">Rate<b>3.4%</b></div></div><div class="chartbox"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i class="hi" style="height:90%"></i><i style="height:60%"></i></div></div></div></div><div class="cap"><b>Analytics dashboard</b><span>Light</span></div></div>
+        <div class="tile"><div class="pic mini" aria-hidden="true"><div class="dash dk"><div class="side"><i class="on"></i><i></i><i></i></div><div class="main"><div class="mh">Analytics</div><div class="kpis"><div class="kpi">Users<b>8.2k</b></div><div class="kpi">Visits<b>21k</b></div><div class="kpi">Rate<b>3.4%</b></div></div><div class="chartbox"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i class="hi" style="height:90%"></i><i style="height:60%"></i></div></div></div></div><div class="cap"><b>Analytics dashboard</b><span>Dark</span></div></div>
+        <div class="tile"><div class="pic" aria-hidden="true"><div class="ui u-hr"><b>Employees · 48</b><div class="row"><i style="background:#F4A261"></i><span>Priya S. · Design</span><em>Active</em></div><div class="row"><i style="background:#6C8EF5"></i><span>Rahul K. · Sales</span><em class="l">On leave</em></div><div class="row"><i style="background:#2E9E6B"></i><span>Anjali M. · HR</span><em>Active</em></div><div class="row"><i style="background:#C2391F"></i><span>Vikas R. · Tech</span><em>Active</em></div></div></div><div class="cap"><b>HR portal</b><span>Dashboard</span></div></div>
+        <div class="tile"><div class="pic" aria-hidden="true"><div class="ui u-el"><b>My courses</b><div class="cards"><div class="c"><i style="background:#F3C78A"></i>Python basics<div class="bar"><s style="width:70%"></s></div></div><div class="c"><i style="background:#A9D3C2"></i>Web design<div class="bar"><s style="width:45%"></s></div></div><div class="c"><i style="background:#C9B8F0"></i>SQL<div class="bar"><s style="width:90%"></s></div></div><div class="c"><i style="background:#F2A7A0"></i>Excel<div class="bar"><s style="width:25%"></s></div></div></div></div></div><div class="cap"><b>E-learning</b><span>Website</span></div></div>
+        <div class="tile"><div class="pic" aria-hidden="true"><div class="ui u-gm"><small style="opacity:.7">NEW SEASON</small><strong>LEVEL UP<br>YOUR GAME</strong><div class="g"><span>Play now</span><span class="o">Trailer</span></div></div></div><div class="cap"><b>Gaming</b><span>Website</span></div></div>
+        <div class="tile"><div class="pic" aria-hidden="true"><div class="ui u-dt"><div class="txt"><strong>Find someone who gets you.</strong><span>Real profiles, real matches.</span><span class="pill">Get the app</span></div><div class="phone"><i></i><span><b>✕</b><b style="color:#E0335F">♥</b></span></div></div></div><div class="cap"><b>Dating app</b><span>Landing page</span></div></div>
+        <div class="tile"><div class="pic" aria-hidden="true"><div class="ui u-co"><small style="opacity:.7">COACHING INSTITUTE</small><strong>Crack your exam with expert mentors</strong><span class="pill">Book a free demo</span><div class="feat"><span>Live classes</span><span>Mock tests</span><span>Notes</span></div></div></div><div class="cap"><b>Coaching site</b><span>Website</span></div></div>
+        <div class="tile more"><b>+4</b><span class="muted">more designs, including light and dark variants</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="skills">
+    <div class="in">
+      <div class="shead">
+        <div><div class="eyebrow">Toolkit</div><h2>Skills</h2></div>
+        <p>The tools and methods I use in my projects and courses.</p>
+      </div>
+      <div class="skillgrid">
+        <div class="sk"><h3>UI/UX Design</h3><ul><li>Figma</li><li>Wireframing</li><li>Prototyping</li><li>Responsive design</li><li>Human-computer interaction</li></ul></div>
+        <div class="sk"><h3>Web Development</h3><ul><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Node.js</li><li>Express.js</li><li>PHP</li><li>MySQL</li></ul></div>
+        <div class="sk"><h3>Data &amp; ML</h3><ul><li>Pandas</li><li>NumPy</li><li>Scikit-learn</li><li>Matplotlib</li><li>Seaborn</li><li>K-Means</li><li>Linear &amp; logistic regression</li></ul></div>
+        <div class="sk"><h3>Programming &amp; tools</h3><ul><li>Python</li><li>C++</li><li>JavaScript</li><li>Java</li><li>VS Code</li><li>MS Excel</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="journey">
+    <div class="in">
+      <div class="shead">
+        <div><div class="eyebrow">Learning path</div><h2>Journey</h2></div>
+        <p>Certificates and courses, newest first.</p>
+      </div>
+      <div class="jgrid">
+        <ol class="tl">
+          <li><div class="when">Jul 2026</div><h3>Introduction to MS Excel</h3><div class="by">Certificate code 10525103</div></li>
+          <li><div class="when">Feb – Apr 2026</div><h3>Artificial Intelligence</h3><div class="by">E &amp; ICT Academy, IIT Kanpur (MeitY &amp; IIT Kanpur) · Online Live Winter Training</div><span class="pill2">IIT Kanpur</span></li>
+          <li><div class="when">Jan – Apr 2026</div><h3>Human Computer Interaction</h3><div class="by">NPTEL · 12-week course · 4 credits</div><span class="pill2 r">Elite · 80%</span></li>
+          <li><div class="when">Jul – Sep 2025</div><h3>Soft Skill Development</h3><div class="by">NPTEL · 8-week course</div></li>
+          <li><div class="when">Mar 2025</div><h3>Full Stack Web Application Development</h3><div class="by">JavaScript University, Arizona · 80 hours</div></li>
+          <li><div class="when">Jan – Mar 2025</div><h3>Web Development using PHP &amp; MySQL</h3><div class="by">Oracle Academy</div></li>
+          <li><div class="when">Mar – Jun 2024</div><h3>UI/UX Design</h3><div class="by">JavaScript University, Arizona · 90 hours</div></li>
+          <li class="edu"><div class="when">2022</div><h3>Started B.Tech in Computer Science &amp; Engineering</h3><div class="by">NSIT Bihta, Patna</div></li>
+        </ol>
+        <aside class="edcard">
+          <div class="eyebrow">Education</div>
+          <h3 style="margin-top:8px">B.Tech, Computer Science &amp; Engineering</h3>
+          <p class="muted" style="margin-top:4px">Netaji Subhas Institute of Technology, Bihta · Bihar Engineering University · 2022 – 2026</p>
+          <div class="cg"><b>7.1</b><span class="muted">CGPA up to semester VI · Sem VII–VIII results awaited</span></div>
+          <figure class="chart" style="margin:18px 0 0">
+            <svg viewBox="0 0 360 160" role="img" aria-label="SGPA by semester: I 6.44, II 6.77, III 7.38, IV 6.89, V 7.74, VI 7.13">
+              <g stroke="var(--line)" stroke-width="1"><line x1="30" y1="130" x2="345" y2="130"/><line x1="30" y1="75" x2="345" y2="75" stroke-dasharray="3 4"/><line x1="30" y1="20" x2="345" y2="20" stroke-dasharray="3 4"/></g>
+              <text x="2" y="133">6.0</text><text x="2" y="78">7.0</text><text x="2" y="23">8.0</text>
+              <polygon fill="var(--red-soft)" points="40,130 40,105.8 96,87.65 152,54.1 208,81.05 264,34.3 320,67.85 320,130"/>
+              <polyline fill="none" stroke="var(--red)" stroke-width="2.2" points="40,105.8 96,87.65 152,54.1 208,81.05 264,34.3 320,67.85"/>
+              <g fill="var(--card)" stroke="var(--red)" stroke-width="2"><circle cx="40" cy="105.8" r="4"/><circle cx="96" cy="87.65" r="4"/><circle cx="152" cy="54.1" r="4"/><circle cx="208" cy="81.05" r="4"/><circle cx="264" cy="34.3" r="4.5" fill="var(--red)"/><circle cx="320" cy="67.85" r="4"/></g>
+              <g text-anchor="middle"><text class="v" x="40" y="95">6.44</text><text class="v" x="96" y="77">6.77</text><text class="v" x="152" y="44">7.38</text><text class="v" x="208" y="98">6.89</text><text class="v" x="264" y="24">7.74</text><text class="v" x="320" y="58">7.13</text></g>
+              <g text-anchor="middle"><text x="40" y="150">Sem I</text><text x="96" y="150">II</text><text x="152" y="150">III</text><text x="208" y="150">IV</text><text x="264" y="150">V</text><text x="320" y="150">VI</text></g>
+            </svg>
+          </figure>
+          <div class="eyebrow" style="margin-top:18px;color:var(--muted)">Relevant coursework</div>
+          <div class="cw"><span>Machine Learning</span><span>Computer Networks</span><span>Cryptography &amp; Network Security</span><span>Compiler Design</span><span>Java</span><span>Python</span></div>
+          <div class="school"><div><span>Intermediate (Class XII)</span><b>61%</b></div><div><span>Matriculation (Class X)</span><b>59%</b></div></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <svg class="mb" preserveAspectRatio="none" aria-hidden="true"><rect width="100%" height="26" fill="url(#mbp)"/></svg>
+    <div class="in">
+      <div>
+        <h2>Let's make something people enjoy using.</h2>
+        <p>I'm looking for entry-level roles and internships in UI/UX design or web development. Email is the quickest way to reach me.</p>
+      </div>
+      <div>
+        <div class="crow"><div><small>Email</small><b id="em">Sweetykumari1227@gmail.com</b></div><button class="copy" id="c-em" data-t="em" type="button">Copy</button></div>
+        <div class="crow"><div><small>Phone</small><b id="ph">+91 93043 74317</b></div><button class="copy" id="c-ph" data-t="ph" type="button">Copy</button></div>
+        <div class="crow"><div><small>Location</small><b>Patna, Bihar, India</b></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="in"><span>© 2026 Sweety Kumari</span><span>Border pattern inspired by Madhubani art from Bihar</span></div></footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.t),t=el.textContent.trim();
+    function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected';}
+    try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copied ✓';},sel);}catch(e){sel();}
+    setTimeout(function(){b.textContent='Copy';},1800);
+  });
+});
+(function(){
+  var c=document.getElementById('km');if(!c)return;
+  function draw(){
+    var r=c.getBoundingClientRect(),d=window.devicePixelRatio||1;if(!r.width)return;
+    c.width=r.width*d;c.height=r.height*d;var x=c.getContext('2d');x.setTransform(d,0,0,d,0,0);
+    var cs=getComputedStyle(document.documentElement),g=function(n){return cs.getPropertyValue(n).trim();};
+    x.strokeStyle=g('--line');x.lineWidth=1;x.beginPath();x.moveTo(0.5,0);x.lineTo(0.5,r.height-0.5);x.lineTo(r.width,r.height-0.5);x.stroke();
+    var cols=[g('--leaf'),g('--gold'),g('--red')],cen=[[.24,.7],[.55,.42],[.8,.18]],seed=11;
+    function rnd(){seed=(seed*9301+49297)%233280;return seed/233280;}
+    for(var k=0;k<3;k++){
+      for(var i=0;i<40;i++){var a=rnd()*6.283,rad=Math.sqrt(rnd())*.15;
+        x.beginPath();x.arc((cen[k][0]+Math.cos(a)*rad)*r.width,(cen[k][1]+Math.sin(a)*rad*1.15)*r.height,3.4,0,6.283);
+        x.globalAlpha=.8;x.fillStyle=cols[k];x.fill();}
+      x.globalAlpha=1;x.beginPath();x.arc(cen[k][0]*r.width,cen[k][1]*r.height,8,0,6.283);x.fillStyle=g('--card');x.fill();
+      x.lineWidth=2.5;x.strokeStyle=g('--ink');x.stroke();
+    }
+  }
+  draw();addEventListener('resize',draw);
+  try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);}catch(e){}
+  new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+})();
+</script>
+</body>
+</html>
